@@ -32,6 +32,7 @@
   background-size: cover;
 }
 .price {
+  display: inline;
   background-color: tomato;
   border-radius: 1rem;
   padding: 0 1rem;
