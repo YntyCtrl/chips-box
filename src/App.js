@@ -1,5 +1,5 @@
 import Layout from "./components/Layout/Layout";
-import PizzaBuilder from "./components/PizzaBuilder/PizzaBuilder";
+import CipsBox from "./components/CipsBox/CipsBox";
 import Checkout from "./components/Checkout/Checkout";
 
 import "./App.css";
@@ -10,7 +10,7 @@ const App = () => {
     <div className="App">
       <Layout>
         <Switch>
-          <Route path="/" component={PizzaBuilder} exact />
+          <Route path="/" component={CipsBox} exact />
           <Route path="/checkout" component={Checkout} />
           <Redirect to="/" />
         </Switch>
