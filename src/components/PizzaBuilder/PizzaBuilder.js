@@ -1,33 +1,41 @@
 import PizzaPreview from "./PizzaPreview/PizzaPreview";
 import PizzaControls from "./PizzaControls/PizzaControls";
-
+import axios from "axios";
 import classes from "./PizzaBuilder.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Modal from "../UI/Modal/Modal";
 import OrderSummary from "./OrderSummary/OrderSummary";
 import Button from "../UI/Button/Button";
 
-const PizzaBuilder = () => {
+const PizzaBuilder = ({ history }) => {
   const prices = {
-    tomato: 3.5,
-    salami: 4,
-    greenOlive: 0.3,
-    blackOlive: 0.3,
-    redPepper: 2,
-    yellowPepper: 1,
+    Bekon: 45,
+    Barbecue: 34,
+    Crab: 30,
+    Hickory: 46,
+    Classic: 37,
+    Onion: 40,
   };
-  const [ingredients, setIngredients] = useState({
-    Bekon: 0,
-    Barbecue: 0,
-    Crab: 0,
-    Hickory: 0,
-    Classic: 0,
-    Onion: 0,
-  });
+  const [ingredients, setIngredients] = useState({});
 
   const [ordering, setOrdering] = useState(false);
-  const [price, setPrice] = useState(150);
+  const [price, setPrice] = useState(0);
+
+  useEffect(loadDefaults, []);
+
+  function loadDefaults() {
+    axios
+      .get("https://chips-box-default-rtdb.firebaseio.com/default.json")
+      .then((response) => {
+        setPrice(response.data.price);
+
+        // For arrays
+        // setIngredients(Object.values(response.data.ingredients));
+        // For objects
+        setIngredients(response.data.box);
+      });
+  }
 
   function addIngredient(type) {
     const newIngredients = { ...ingredients };
@@ -52,10 +60,24 @@ const PizzaBuilder = () => {
   function stopOrdering() {
     setOrdering(false);
   }
-
+  function finishOrdering() {
+    axios
+      .post("https://chips-box-default-rtdb.firebaseio.com/orders.json", {
+        ingredients: ingredients,
+        price: price,
+        address: "1234 Jusaeva str",
+        phone: "0 777 777 777",
+        name: "Sadyr Japarov",
+      })
+      .then(() => {
+        setOrdering(false);
+        loadDefaults();
+        history.push("/checkout");
+      });
+  }
   return (
     <div className={classes.PizzaBuilder}>
-      <PizzaPreview ingredients={ingredients} />
+      <PizzaPreview ingredients={ingredients} price={price} />
       <PizzaControls
         ingredients={ingredients}
         addIngredient={addIngredient}
@@ -64,7 +86,7 @@ const PizzaBuilder = () => {
       />
       <Modal show={ordering} cancel={stopOrdering}>
         <OrderSummary ingredients={ingredients} price={price} />
-        <Button  green>
+        <Button onClick={finishOrdering} green>
           Checkout
         </Button>
         <Button onClick={stopOrdering}>Cancel</Button>
