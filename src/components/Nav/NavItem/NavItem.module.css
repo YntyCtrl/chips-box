@@ -14,7 +14,7 @@
   border-color: white;
 }
 
-@media (max-width: 549px) {
+@media (max-width: 660px) {
   .NavItem a {
     border-right: 10px solid transparent;
     border-bottom: none;

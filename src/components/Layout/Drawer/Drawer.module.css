@@ -19,7 +19,7 @@
   transform: translateX(-310px);
 }
 
-@media (min-width: 550px) {
+@media (min-width: 660px) {
   .Drawer  {
     display: none;
   }
