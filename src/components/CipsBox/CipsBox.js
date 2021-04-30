@@ -65,9 +65,9 @@ const CipsBox = ({ history }) => {
       .post("https://chips-box-default-rtdb.firebaseio.com/orders.json", {
         ingredients: tastes,
         price: price,
-        address: "1234 Jusaeva str",
-        phone: "0 777 777 777",
-        name: "Sadyr Japarov",
+        address: "Tynystanov 60/65",
+        phone: "0 707 700 731",
+        name: "Mukashov Yntymak",
       })
       .then(() => {
         setOrdering(false);
