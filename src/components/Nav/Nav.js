@@ -7,7 +7,7 @@ const Nav = () => {
       <NavItem url="/" exact>
         Chips Box
       </NavItem>
-      <NavItem url="/checkout">Checkout</NavItem>
+      <NavItem url="/orders">Orders</NavItem>
     </ul>
   );
 };
