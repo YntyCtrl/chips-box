@@ -1,7 +1,8 @@
 import Button from "../../../UI/Button/Button";
-import PizzaTaste from "../../ChipsTaste/ChipsTaste";
+import ChipsTaste from "../../ChipsTaste/ChipsTaste";
 import classes from "./ChipsControl.module.css";
 import { useDispatch } from "react-redux";
+import { add, remove } from "../../../../store/actions/box";
 
 const ChipsControl = ({ type,  count }) => {
 
@@ -9,16 +10,11 @@ const ChipsControl = ({ type,  count }) => {
 
   return (
     <div className={classes.ChipsControl}>
-      <Button onClick={() => dispatch({ type: "ADD_INGREDIENT", taste: type })}>
-        +
-      </Button>
+      <Button onClick={() => dispatch(add(type))}>+</Button>
       <div className={classes.taste}>
-        <PizzaTaste type={type} fixed />
+        <ChipsTaste type={type} fixed />
       </div>
-      <Button
-        onClick={() => dispatch({ type: "REMOVE_INGREDIENT", taste: type })}
-        disabled={!count}
-      >
+      <Button onClick={() => dispatch(remove(type))} disabled={!count}>
         -
       </Button>
     </div>
