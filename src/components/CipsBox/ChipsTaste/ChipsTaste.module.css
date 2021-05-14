@@ -1,15 +1,17 @@
 .ChipsTaste {
  display: flex;
- flex-direction: column;
+ flex-direction: column-reverse;
  background-size: cover;
- /* animation: spin 1s ease-out 1; */
+ margin-top: 2px;
+ margin-bottom: 2px;
+ align-items: center;
+ justify-content: flex-start;
+
 }
-/* @keyframes spin {
-  0% {
-    transform: translateY(340px) translateX(120px);
-  }
-  100% {
-    transform: translateY(0px);
-    transform: translateX(0px);
-  }
-} */
+
+
+.holder{
+  height: 14px;
+  width: 8px;
+  background-color: #2009f1;
+}
