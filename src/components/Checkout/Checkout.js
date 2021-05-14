@@ -1,12 +1,12 @@
 import classes from "./Checkout.module.css";
 import ChipsPreview from "../CipsBox/ChipsPreview/ChipsPreview";
 import ChekoutForm from "./ChekoutForm/CheckoutForm";
-import axios from "axios";
+import axios from "../../axios";
 import { useSelector } from "react-redux";
 
 const Checkout = ({ history }) => {
-  const tastes = useSelector((state) => state.tastes);
-  const price = useSelector((state) => state.price);
+  const tastes = useSelector((state) => state.box.tastes);
+  const price = useSelector((state) => state.box.price);
   function cancelCallback() {
     history.replace('/');
   }
@@ -14,7 +14,7 @@ const Checkout = ({ history }) => {
     const data = new FormData(event.target);
 
     axios
-      .post("https://chips-box-default-rtdb.firebaseio.com/orders.json", {
+      .post("/orders.json", {
         name: data.get("name"),
         address: data.get("address"),
         phone: data.get("phone"),
