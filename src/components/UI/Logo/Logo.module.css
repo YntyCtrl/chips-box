@@ -2,9 +2,13 @@
   display: flex;
   align-items: center;
   font-weight: 500;
+  
 }
 .Logo img {
   height: 3rem;
   margin: .5rem;
   
+}
+.name{
+  color: rgb(11, 46, 219);
 }
