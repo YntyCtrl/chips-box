@@ -2,23 +2,24 @@ import ChipsPreview from "./ChipsPreview/ChipsPreview";
 import ChipsControls from "./ChipsControls/ChipsControls";
 
 import classes from "./CipsBox.module.css";
-import {  useState } from "react";
+import { useEffect,  useState } from "react";
 
 import Modal from "../UI/Modal/Modal";
 import OrderSummary from "./OrderSummary/OrderSummary";
 import Button from "../UI/Button/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { load } from "../../store/actions/box";
 
 const CipsBox = ({ history }) => {
   
-
-  const tastes = useSelector((state) => state.tastes);
-  const price = useSelector((state) => state.price);
+  const dispatch = useDispatch();
+  const tastes = useSelector((state) => state.box.tastes);
+  const price = useSelector((state) => state.box.price);
   const [ordering, setOrdering] = useState(false);
   
 
-  // useEffect(loadDefaults, []);
-
+  useEffect(() => dispatch(load()), [dispatch]);
+  
   // function loadDefaults() {
   //   axios
   //     .get("https://chips-box-default-rtdb.firebaseio.com/default.json")
@@ -62,7 +63,7 @@ const CipsBox = ({ history }) => {
         <OrderSummary 
           tastes={tastes} 
           price={price} />
-        <Button onClick={finishOrdering} green>
+        <Button onClick={finishOrdering} green="green">
           Checkout
         </Button>
         <Button onClick={stopOrdering}>Cancel</Button>
