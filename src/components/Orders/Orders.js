@@ -1,23 +1,17 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+
+import { useEffect,} from "react";
 import Order from "./Order/Order";
 import classes from "./Orders.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { load } from "../../store/actions/orders.js";
 
 const Orders = () => {
-    const [orders, setOrders] = useState([]);
+    const dispatch = useDispatch();
+    const orders = useSelector((state) => state.orders);
 
     useEffect(() => {
-        axios.get('https://chips-box-default-rtdb.firebaseio.com/orders.json')
-            .then(response => {
-                const newOrders = Object.keys(response.data).map(id => {
-                    return {
-                        ...response.data[id],
-                        id: id,
-                    };
-                });
-                setOrders(newOrders);
-            });
-    }, []);
+        dispatch(load());
+    }, [dispatch]);
 
     const results = orders.map(order => <Order key={order.id} {...order} />);
 
