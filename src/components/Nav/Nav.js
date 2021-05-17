@@ -5,7 +5,7 @@ const Nav = () => {
   return (
     <ul className={classes.Nav}>
       <NavItem url="/" exact>
-        Chips Box
+        Box made
       </NavItem>
       <NavItem url="/orders">Orders</NavItem>
     </ul>
