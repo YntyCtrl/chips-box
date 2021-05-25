@@ -9,8 +9,9 @@ import reportWebVitals from "./reportWebVitals";
 
 import box from "./store/reducers/box";
 import orders from "./store/reducers/orders";
+import auth from "./store/reducers/auth";
 
-const rootReducer = combineReducers({ box, orders });
+const rootReducer = combineReducers({ box, orders, auth});
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
