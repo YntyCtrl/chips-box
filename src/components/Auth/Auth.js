@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import axios from "../../axios";
 import { start, auth } from "../../store/actions/auth";
 import withAxios from "../withAxios";
@@ -18,7 +18,7 @@ export default withAxios(() => {
 
     const data = new FormData(event.target);
     const method =
-      event.nativeEvent.submitter.innerText == "Sign in" ? "signin" : "signup";
+      event.nativeEvent.submitter.innerText = "Sign in" ? "signin" : "signup";
     
     auth(dispatch, method, data.get('email'), data.get('password'));
 
