@@ -10,12 +10,14 @@ import Button from "../UI/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { load } from "../../store/actions/box";
 
+
 const CipsBox = ({ history }) => {
   
   const dispatch = useDispatch();
   const tastes = useSelector((state) => state.box.tastes);
   const price = useSelector((state) => state.box.price);
   const [ordering, setOrdering] = useState(false);
+  const isAuthenticated = useSelector((state) => state.auth.token !== null);
   
 
   useEffect(() => dispatch(load()), [dispatch]);
@@ -36,7 +38,11 @@ const CipsBox = ({ history }) => {
   
 
   function startOrdering() {
-    setOrdering(true);
+   if (isAuthenticated) {
+     setOrdering(true);
+   } else {
+     history.push("/auth");
+   }
   }
 
   function stopOrdering() {
