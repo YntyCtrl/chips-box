@@ -5,6 +5,7 @@ import axios from "../../axios";
 import { useSelector } from "react-redux";
 
 const Checkout = ({ history }) => {
+  const { token, id } = useSelector((state) => state.auth);
   const tastes = useSelector((state) => state.box.tastes);
   const price = useSelector((state) => state.box.price);
   function cancelCallback() {
@@ -14,12 +15,13 @@ const Checkout = ({ history }) => {
     const data = new FormData(event.target);
 
     axios
-      .post("/orders.json", {
+      .post("/orders.json?auth=" + token, {
         name: data.get("name"),
         address: data.get("address"),
         phone: data.get("phone"),
         tastes: tastes,
         price: price,
+        userId: id,
       })
       .then((response) => {
         history.replace("/");
