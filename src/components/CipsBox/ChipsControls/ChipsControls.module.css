@@ -2,8 +2,12 @@
   flex: 0 0 250px;
   border-radius: 1rem;
   padding: 1rem;
-  background-color: rgb(119, 197, 211);
+  background-color: #4997dd;
   color: white;
   text-align: center;
   height: 500px;
+  
+}
+strong{
+  font-size: 24px;
 }
