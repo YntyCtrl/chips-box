@@ -1,0 +1,54 @@
+
+main{
+    height: 400px;
+    padding: 0;
+    margin: 0;
+}
+.Auth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+.form{
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    font-size: 1.5rem;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+
+    background-color:  #49ddda;
+    padding: 10px;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.h1{
+    color: #ffffff;
+    
+    
+}
+.email, .password{
+    border-radius: 1rem;
+    border: 1px solid lightgray;
+    font-size: 1.5rem;
+    padding: 0 1rem;
+    margin-bottom: 4px;
+    max-width: 330px;
+}
+.email:focus, .password:focus{
+    outline: none;
+    border-color: darkgray;
+}
+.sign_in{
+    margin: 5px;
+    display: inline;
+}
+.sign_up{
+    display: inline;
+}
