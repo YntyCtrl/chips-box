@@ -52,7 +52,7 @@ const ChipsTaste = ({ type }) => {
 
   return (
     <div className={classes.ChipsTaste} style={types[type]}>
-      <div className={classes.holder}></div>
+      {/* <div className={classes.holder}></div> */}
     </div>
   );
 };
