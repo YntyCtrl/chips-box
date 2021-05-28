@@ -6,34 +6,42 @@
   
   
   
-  justify-content: space-between;
-  flex-direction: column;
   
- 
+  
+  width: 100%;
  
 }
 .pizza {
  min-height: 400px;
-  
+  width: 100%;
   margin-bottom: 1rem;
   
-  background-color: #d4bc89;
+  /* background-color: #49dd90; */
+  background-image: url(../../../image/box.png);
+  background-size: 100% 100%;
+
 
   
 }
 .tastes {
   
-  width: 400px;
-  
+  max-width: 320px;
+  width: 100%;
+
   margin: 2px;
-  padding: 2px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  padding-left: 35px;
+  padding-right: 35px;
+
+
   display: flex;
   flex-wrap: wrap;
   background-size: cover;
 }
 .price {
   display: inline;
-  background-color: rgb(92, 116, 71);
+  background-color:  #49dd90;
   border-radius: 1rem;
   padding: 0 1rem;
   font-size: 1.5rem;
