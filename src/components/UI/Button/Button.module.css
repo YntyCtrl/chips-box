@@ -1,6 +1,6 @@
 .Button {
   border: 0;
-  margin: 0 .5rem;
+  margin: .3rem .5rem;
   padding: 0 1rem;
   border-radius: 1rem;
   background-color: rgba(194, 220, 245, 0.603);
@@ -8,6 +8,7 @@
   font-weight: bold;
   font-size: 1.5rem;
   cursor: pointer;
+  font-family: 'Courgette', cursive;
 }
 .Button:not(:disabled):hover {
   background-color: rgb(255, 4, 4);
